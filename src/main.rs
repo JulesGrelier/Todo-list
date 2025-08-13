@@ -7,6 +7,8 @@ use crate::input_database::input_database::get_tasks;
 use crate::output_database::output_database::write_tasks_in_database;
 use crate::task_manager::TaskManager;
 
+
+
 fn main() {
     const DATABASE_PATH : &'static str = "database.txt";
 
@@ -28,7 +30,7 @@ fn main() {
         match keyword_and_request[0] {
             "add" => task_manager.add_task(keyword_and_request[1], false),
             "done" => task_manager.mark_task_done(keyword_and_request[1]),
-            "print" => task_manager.print_tasks(),
+            "print" => task_manager.print_again(),
             "save" => write_tasks_in_database(DATABASE_PATH, &task_manager.tasks),
             "quit" | _ => break,
         }

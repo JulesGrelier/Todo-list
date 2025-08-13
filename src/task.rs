@@ -1,4 +1,5 @@
-#[derive(Debug)]
+use colored::{ColoredString, Colorize};
+
 pub struct Task {
     pub title : String,
     pub done : bool,
@@ -15,8 +16,16 @@ impl Task {
 
     pub fn return_database_output(&self) -> String {
         let bool_as_str = if self.done {"1"} else {"0"};
-        let text_input = format!("{} {}\n", bool_as_str, self.title);
+        let text_output = format!("{} {}\n", bool_as_str, self.title);
 
-        return text_input;
+        return text_output;
+    }
+
+    pub fn return_styling_print_output(&self) -> ColoredString {
+        if self.done {
+            self.title.white()
+        } else {
+            self.title.truecolor(150, 150, 150).strikethrough()
+        }
     }
 }
